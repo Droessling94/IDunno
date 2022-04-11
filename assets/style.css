@@ -1,3 +1,6 @@
+#myHeader {
+    background-color: purple;
+
 .ourFooter {
     height: 5vh;
     max-height: 20%;
@@ -22,5 +25,4 @@
     font-size: xx-large;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
-
 }
