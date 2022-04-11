@@ -7,6 +7,9 @@ var accessToken;
 var authURL = "https://id.twitch.tv/oauth2/token?client_id=86r14t0e30c28isroziyi3f0m1b3bo&client_secret=73dsrf43drt9m7rfhhmjpgbxzca8r3&grant_type=client_credentials";
 var apiURL =  "https://api.igdb.com/v4/games"
 
+// John's web server:
+// https://floating-headland-95050.herokuapp.com/
+
 
 var requestOptions = {
     method: 'POST',
@@ -15,25 +18,33 @@ var requestOptions = {
   
 fetch(authURL, requestOptions)
 .then(function (response) {
+    console.log(response);
     return response.json();
 })
 .then(function(data) {
     accessToken = data.access_token;
+    console.log(accessToken)
+    return accessToken;
 })
 
 
+function test() {
+    var myHeaders = new Headers();
+myHeaders.append("Client-ID", "86r14t0e30c28isroziyi3f0m1b3bo");
+myHeaders.append("Authorization", "Bearer " + accessToken);
+myHeaders.append("Access-Control-Allow-Origin", "*");
+myHeaders.append("Content-Type", "*");
 
-//     var myHeaders = new Headers();
-//     myHeaders.append("Client-ID", "86r14t0e30c28isroziyi3f0m1b3bo");
-//     myHeaders.append("Authorization", "Bearer ddsjcc8zwpzu9om6nqd8swnyuykcyp");
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
 
-//     var requestOptions2 = {
-//         method: 'GET',
-//         headers: myHeaders,
-//         redirect: 'follow',
-//     };
+fetch("https://floating-headland-95050.herokuapp.com/api.igdb.com/v4/games", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}
 
-//     fetch("https://api.igdb.com/v4/games", requestOptions2)
-//   .then(response => console.log(response))
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));
+setTimeout(test, 2000)
