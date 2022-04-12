@@ -53,7 +53,7 @@ h1 h2 { }
     cursor: pointer;
 }
 
-#gitHubLink {
+#commontext {
     color: rgb(15, 206, 25);
     font-size: xx-large;
     font-weight: bold;
@@ -66,4 +66,11 @@ h1 h2 { }
     margin-left: 3%;
     cursor: pointer;
 
+}
+
+#myListCard {
+    display: flex;
+    flex-direction: column;
+    background-image: url("./pickolascage.jpg");
+    
 }
