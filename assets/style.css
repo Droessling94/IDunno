@@ -1,3 +1,21 @@
+
+
+.column {
+    border: 1px solid red;
+    margin: 2%;
+}
+.card {
+    border: 1px solid blue;
+    text-align: center;
+}
+
+.card-radius {
+    height: 500px !important;
+}
+
+h1 h2 { }
+    
+
 #myHeader {
     background-color: purple;
 }
@@ -47,4 +65,5 @@
     position: absolute;
     margin-left: 3%;
     cursor: pointer;
+
 }
