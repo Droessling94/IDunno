@@ -2,6 +2,14 @@
     background-color: rgb(15, 206, 25);
 }
 
+.card {
+    display: flex !important;
+    border-style: solid;
+    border-radius: 50px !important;
+    height: 40%;
+    width: 40%;
+}
+
 .ourFooter {
     height: 5vh;
     max-height: 20%;
