@@ -7,17 +7,30 @@
 .card {
     border: 1px solid blue;
     text-align: center;
+    padding: 5%;
+    background-color: lightblue;
 }
 
 .card-radius {
-    height: 500px !important;
+    height: 100% !important;
 }
 
-h1 h2 { }
-    
 
-#myHeader {
-    background-color: purple;
+h1 {
+    font-weight: bolder;
+    margin: 20% 0%;
+}
+
+h2 {
+    margin: 20% 0%;
+}
+
+button {
+    margin: 10% 0%;
+    color: white;
+    background-color: black;
+    border-radius: 10%;
+    padding: 2%;
 }
 
 #myHeaderContainer{
@@ -26,6 +39,7 @@ h1 h2 { }
     justify-content: center;
     align-items: center;
 }
+
 .ourFooter {
     height: 5vh;
     max-height:20%;
@@ -65,12 +79,10 @@ h1 h2 { }
     position: absolute;
     margin-left: 3%;
     cursor: pointer;
-
 }
 
 #myListCard {
     display: flex;
     flex-direction: column;
     background-image: url("./pickolascage.jpg");
-    
 }
