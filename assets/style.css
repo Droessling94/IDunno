@@ -40,3 +40,10 @@
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
 }
+#logoImg{
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    margin-left: 3%;
+    cursor: pointer;
+}
