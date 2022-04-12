@@ -52,12 +52,12 @@ function test() {
     console.log(data)
   })
 }
-setTimeout(test, 1000)
+setTimeout(test, 2000)
 
 
 //lines 59-70 are for movie api
 var mKey = "a8ef916164f716884135094e19f6727b";
-var mApiUrl = "https://api.themoviedb.org/3/movie/550?api_key=" + mKey;
+var mApiUrl = "https://api.themoviedb.org/3/certification/movie/list?api_key=a8ef916164f716884135094e19f6727b";
 function getMovies() {
   fetch(mApiUrl)
   .then(function (response) {
@@ -67,4 +67,4 @@ function getMovies() {
     console.log(data);
   })
 }
-setTimeout(getMovies, 1000)
+setTimeout(getMovies, 2000)
