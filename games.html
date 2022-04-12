@@ -6,138 +6,228 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/gameStyle.css">
     <title>Games</title>
 </head>
 
 <header>
-    <section class="hero is-small is-primary" id=myHeader>
-        <div class="hero-body has-text-centered">
-          <p class="title">
-            iDunno - A NEET Decision Maker
-          </p>
-          <p class="subtitle">
-            The Ultimate Tool to Help You Be Lazy
-          </p>
-        </div>
-      </section>
+  <section class="hero is-small is-primary" id=myHeader>
+
+      <div class="hero-body has-text-centered" id="myHeaderContainer">
+        <a href="index.html"><img src="./assets/IDunnoIcon_Mock.png" id="logo" alt="logo image"></a>
+        <p class="title">
+          iDunno - A NEET Decision Maker
+        </p>
+        <p class="subtitle">
+          The Ultimate Tool to Help You Be Lazy
+        </p>
+      </div>
+    </section>
 </header>
 
 <body>
+  <section class="genre">
+    <label class="label">Genre</label>
+      <div class="buttons is-grouped">    
+          <button class="button is-rounded is-outlined is-small" value="Adventure">
+          Adventure
+          </button>
 
-<div class="field">
-  <label class="label">Genre</button>
-  
-  <button class="button">
-  Adventure
-  </button>
-  </div>
+          <button class="button is-rounded is-outlined is-small" value="Arcade">
+          Arcade
+          </button>
 
-  <button class="button">
-  
-  Arcade
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Card & Board Game">
+          Card & Board Game
+          </button>
 
-  <button class="button">
-  
-  Card & Board Game
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Fighting">
+          Fighting
+          </button>
 
-  <button class="button">
-  
-  Fighting
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Hack and Slash/Beat 'Em Up">
+          Hack and Slash/Beat 'Em Up
+          </button>
 
-  <button class="button">
-  
-  Hack and Slash/Beat 'Em Up
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Indie">
+          Indie
+          </button>
 
-  <button class="button">
-  
-  Indie
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="MOBA">
+          MOBA
+          </button>
 
-  <button class="button">
-  
-  MOBA
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Music">
+          Music
+          </button>
 
-  <button class="button">
-  
-  Music
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Pinball">
+          Pinball
+          </button>
+          
+          <button class="button is-rounded is-outlined is-small" value="Platform">
+          Platform
+          </button>
 
-  <button class="button">
-  
-  Pinball
-  </button>
-  
-  <button class="button">
-  
-  Platform
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Point-and-click">
+          Point-and-click
+          </button>
 
-  <button class="button">
-  
-  Point-and-click
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Quiz/Trivia">
+          Quiz/Trivia
+          </button>
 
-  <button class="button">
-  
-  Quiz/Trivia
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Racing">
+          Racing
+          </button>
 
-  <button class="button">
-  
-  Racing
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Real Time Strategy (RTS)">
+          Real Time Strategy (RTS)
+          </button>
 
-  <button class="button">
-  
-  Real Time Strategy (RTS)
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Role-playing (RPG)">
+          Role-playing (RPG)
+          </button>
 
-  <button class="button">
-  
-  Role-playing (RPG)
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Shooter">
+          Shooter
+          </button>
 
-  <button class="button">
-  
-  Shooter
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Simulator">
+          Simulator
+          </button>
 
-  <button class="button">
-  
-  Simulator
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Sport">
+          Sport
+          </button>
 
-  <button class="button">
-  
-  Sport
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Strategy">
+          Strategy
+          </button>
 
-  <button class="button">
-  
-  Strategy
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Tactical">
+          Tactical
+          </button>
 
-  <button class="button">
-  
-  Tactical
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Turn-based strategy">
+          Turn-based strategy
+          </button>
 
-  <button class="button">
-  
-  Turn-based strategy
-  </button>
+          <button class="button is-rounded is-outlined is-small" value="Visual Novel">
+          Visual Novel
+          </button>
+      </div>
+</section>
 
-  <button class="button">
-  
-  Visual Novel
-  </button>
-</div>
+<section class="theme">
+  <label class="label">Theme</label>
+    <div class="buttons is-grouped">    
+      <button class="button is-rounded is-outlined is-small" value="Action">
+      Action
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Business">
+      Business
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Comedy">
+      Comedy
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Drama">
+      Drama
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Educational">
+      Educational
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Fantasy">
+      Fantasy
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Historical">
+      Historical
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Horror">
+      Horror
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Kids">
+      Kids
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Mystery">
+      Mystery
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Non-Fiction">
+      Non-Fiction
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Open world">
+      Open world
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Party">
+      Party
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Romance">
+      Romance
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Sandbox">
+      Sandbox
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Science fiction">
+      Science fiction
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Stealth">
+      Stealth
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Survival">
+      Survival
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Thriller">
+      Thriller
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Warfare">
+      Warfare
+      </button>
+    </div>
+</section>
+
+<section class="platform">
+  <label class="label">Platform</label>
+    <div class="buttons is-grouped">    
+
+      <button class="button is-rounded is-outlined is-small" value="PC (Microsoft Windows)">
+      PC (Microsoft Windows)
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Nintendo Switch">
+      Nintendo Switch
+      </button>
+
+      <button class="button is-rounded is-outlined is-small" value="Playstation 5">
+      Playstation 5
+      </button>
+
+      
+      <button class="button is-rounded is-outlined is-small" value="Xbox Series X|S">
+      Xbox Series X|S
+      </button>
+
+    </div>
+
+  </section>
 
 
 
@@ -147,13 +237,15 @@
 </body>
 
 <footer class="ourFooter">
-    <div  class="ourFooterContainer">
-      <p>
-        <a id="gitHubLink" href="https://github.com/fusionneo" target="_blank">---- Jorge Gonzalez ---</a> 
-        <a id="gitHubLink" href="https://github.com/Jdiaz240" target="_blank">Joshua Diaz ---</a> 
-        <a id="gitHubLink" href="https://github.com/jkstone321" target="_blank">Jordan Stone ---</a> 
-        <a id="gitHubLink" href="https://github.com/Droessling94" target="_blank">Donaldson Roessling ----</a> 
-      </p>
-    </div>
-  </footer>
+  <div class="ourFooterContainer">
+    <p>
+      <a id="commontext" href="https://github.com/fusionneo" target="_blank">---- Jorge Gonzalez ---</a> 
+      <a id="commontext" href="https://github.com/Jdiaz240" target="_blank">Joshua Diaz ---</a> 
+      <a id="commontext" href="https://github.com/jkstone321" target="_blank">Jordan Stone ---</a> 
+      <a id="commontext" href="https://github.com/Droessling94" target="_blank">Donaldson Roessling ----</a> 
+    </p>
+  </div>
+</footer>
 </html>
+
+<script src="./assets/gameJS.js"></script>
