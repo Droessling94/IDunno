@@ -11,6 +11,8 @@ var apiURL =  "https://api.igdb.com/v4/games"
 // https://floating-headland-95050.herokuapp.com/
 
 
+
+//lines 16-55 pull information from the video game api
 var requestOptions = {
     method: 'POST',
     redirect: 'follow'
@@ -29,22 +31,40 @@ fetch(authURL, requestOptions)
 
 
 function test() {
-    var myHeaders = new Headers();
-myHeaders.append("Client-ID", "86r14t0e30c28isroziyi3f0m1b3bo");
-myHeaders.append("Authorization", "Bearer " + accessToken);
-myHeaders.append("Access-Control-Allow-Origin", "*");
-myHeaders.append("Content-Type", "*");
+  var myHeaders = new Headers();
+    myHeaders.append("Client-ID", "86r14t0e30c28isroziyi3f0m1b3bo");
+    myHeaders.append("Authorization", "Bearer " + accessToken);
+    myHeaders.append("Access-Control-Allow-Origin", "*");
+    myHeaders.append("Content-Type", "*");
 
-var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
-};
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
 
-fetch("https://floating-headland-95050.herokuapp.com/api.igdb.com/v4/games", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+  fetch("https://floating-headland-95050.herokuapp.com/api.igdb.com/v4/games", requestOptions)
+  .then(function (response) {
+    console.log(response);
+    return response.json();
+  })
+  .then(function(data) {
+    console.log(data)
+  })
 }
+setTimeout(test, 1000)
 
-setTimeout(test, 2000)
+
+//lines 59-70 are for movie api
+var mKey = "a8ef916164f716884135094e19f6727b";
+var mApiUrl = "https://api.themoviedb.org/3/movie/550?api_key=" + mKey;
+function getMovies() {
+  fetch(mApiUrl)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+  })
+}
+setTimeout(getMovies, 1000)
