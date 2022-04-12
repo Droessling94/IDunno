@@ -55,16 +55,19 @@ function test() {
 setTimeout(test, 2000)
 
 
-//lines 59-70 are for movie api
+//********BELOW HOLDS MOVIE API FETCH AND PARSE INFO*************//
 var mKey = "a8ef916164f716884135094e19f6727b";
-var mApiUrl = "https://api.themoviedb.org/3/certification/movie/list?api_key=a8ef916164f716884135094e19f6727b";
-function getMovies() {
-  fetch(mApiUrl)
+var mApiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${mKey}`;
+function getMovies(searchedMovie) {
+  fetch(mApiUrl + `&query=${searchedMovie}`)
+
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
     console.log(data);
   })
-}
-setTimeout(getMovies, 2000)
+
+
+setTimeout(getMovies("Spiderman"), 2000);
+
