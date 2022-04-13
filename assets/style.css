@@ -1,14 +1,20 @@
+* {
+    font-family: 'Play', sans-serif;
+}
 
-
+.columns {
+    background-color: rgb(41, 41, 41);
+    margin-bottom: 0% !important;
+}
 .column {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 2%;
 }
 .card {
-    border: 1px solid blue;
     text-align: center;
     padding: 5%;
-    background-color: lightblue;
+    background-color: black;
+    color: antiquewhite;
 }
 
 .card-radius {
@@ -17,19 +23,22 @@
 
 h1 {
     font-weight: bolder;
+    font-size: x-large;
     margin: 20% 0%;
 }
 
 h2 {
     margin: 20% 0%;
+    font-size: larger;
 }
 
 .button {
     margin: 10% 0%;
-    color: black;
+    color: white;
     padding: 2%;
-}
+    background-color:rgb(15, 206, 25);
 
+}
 
 #myHeaderContainer{
     display: flex;
@@ -37,15 +46,18 @@ h2 {
     justify-content: center;
     align-items: center;
     height: 25vh;
+    width: 100%;
     background-color: rgb(20, 20, 20);
+    border-bottom:rgb(15, 206, 25) 1px solid;
+    padding: 10%;
 }
 
 .ourFooter {
     position: sticky;
-    height: 5vh;
     max-height:20%;
     width: 100%;
     max-width:100%;
+    margin: 0;
 }
 
 .ourFooterContainer {
@@ -58,7 +70,7 @@ h2 {
     flex-direction: row;
     justify-content: center ;
     flex-wrap: wrap;
-
+    padding: .25%;
 }
 
 #logo {
@@ -71,8 +83,7 @@ h2 {
 #commontext {
     color: rgb(15, 206, 25);
     font-size: xx-large;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold; 
 }
 #logoImg{
     width: 10%;
@@ -121,9 +132,8 @@ h2 {
     display: flex;
     align-items: center;
     flex-direction: column;
-
-
 }
+
 .listBack {
     position: absolute;
     width: 100%;
@@ -131,9 +141,9 @@ h2 {
     display: flex;
     align-items: center;
     flex-direction: column;
-
     transform: rotateY(180deg);
 }
+
 .resultImg{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -158,6 +168,5 @@ h2 {
     border-top: 2px dashed rgb(15, 206, 25);
     text-align: center;
     font-size: x-large;
-    font-family: Arial, Helvetica, sans-serif;
     color: antiquewhite;
 }

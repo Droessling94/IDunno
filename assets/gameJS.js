@@ -30,6 +30,5 @@ document.querySelector("#submitBtn").addEventListener("click", function() {
   }
   gameUserInputs.platform = array.join(",");
   console.log(gameUserInputs);
-
   localStorage.setItem("game-inputs", JSON.stringify(gameUserInputs));
 });
