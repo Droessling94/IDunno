@@ -52,7 +52,7 @@ function test() {
     console.log(data)
   })
 }
-setTimeout(test, 2000)
+setTimeout(test, 2000);
 
 
 //********BELOW HOLDS MOVIE API FETCH AND PARSE INFO*************//
@@ -67,6 +67,7 @@ function getMovies(searchedMovie) {
   .then(function (data) {
     console.log(data);
   })
+}
 
 };
 setTimeout(getMovies("Spiderman"), 1000)
