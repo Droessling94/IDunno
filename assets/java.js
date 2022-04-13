@@ -55,6 +55,7 @@ function test() {
 setTimeout(test, 1000)
 
 
+
 //lines 59-70 are for movie api
 var mKey = "a8ef916164f716884135094e19f6727b";
 var mApiUrl = "https://api.themoviedb.org/3/movie/550?api_key=" + mKey;
@@ -68,3 +69,11 @@ function getMovies() {
   })
 }
 setTimeout(getMovies, 1000)
+
+var genreSel = document.querySelector("button");
+
+var genre =;
+
+genreSel.addEventListener("click", function() {
+  document.getElementById("").innerHTML = "";
+});
