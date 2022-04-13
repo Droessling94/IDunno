@@ -1,4 +1,3 @@
-//code for the idbg database
 var clientID = "86r14t0e30c28isroziyi3f0m1b3bo";
 var clientSecret = "73dsrf43drt9m7rfhhmjpgbxzca8r3";
 
@@ -7,12 +6,11 @@ var accessToken;
 var authURL = "https://id.twitch.tv/oauth2/token?client_id=86r14t0e30c28isroziyi3f0m1b3bo&client_secret=73dsrf43drt9m7rfhhmjpgbxzca8r3&grant_type=client_credentials";
 var apiURL =  "https://api.igdb.com/v4/games"
 
-// John's web server:
-// https://floating-headland-95050.herokuapp.com/
+$("button").click(function() {
+    var buttonValue = $(this).val();
+    console.log(buttonValue);
+});
 
-
-
-//lines 16-55 pull information from the video game api
 var requestOptions = {
     method: 'POST',
     redirect: 'follow'
@@ -20,7 +18,6 @@ var requestOptions = {
   
 fetch(authURL, requestOptions)
 .then(function (response) {
-    console.log(response);
     return response.json();
 })
 .then(function(data) {
@@ -43,15 +40,16 @@ function test() {
     redirect: 'follow'
   };
 
-  fetch("https://floating-headland-95050.herokuapp.com/api.igdb.com/v4/games", requestOptions)
+  fetch("https://floating-headland-95050.herokuapp.com/api.igdb.com/v4/genres/", requestOptions)
   .then(function (response) {
-    console.log(response);
     return response.json();
+    console.log(response)
   })
   .then(function(data) {
     console.log(data)
   })
 }
+<<<<<<< HEAD:assets/java.js
 setTimeout(test, 1000)
 
 
@@ -77,3 +75,6 @@ var genre =;
 genreSel.addEventListener("click", function() {
   document.getElementById("").innerHTML = "";
 });
+=======
+setTimeout(test, 1000)
+>>>>>>> a560e376d1b1c7dbc773c7a585f70d7fb259e84d:assets/gameJS.js

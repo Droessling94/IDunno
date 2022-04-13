@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
+
+    <title>iDunno - The Lazy Guide</title>
+</head>
+
+<header>
+    <section class="hero is-small is-primary" id=myHeader>
+
+        <div class="hero-body has-text-centered" id="myHeaderContainer">
+          <a href="index.html"><img src="./assets/IDunnoIcon_Mock.png" id="logo" alt="logo image"></a>
+          <p class="title">
+            iDunno - A NEET Decision Maker
+          </p>
+          <p class="subtitle">
+            The Ultimate Tool to Help You Be Lazy
+          </p>
+        </div>
+      </section>
+</header>
+
+<body>
+    <div class="container">
+    <!-- <div class="field">
+        <label class="label">Do you want to watch a movie or a TV show?</label>
+        <div class="control">
+            <label class = "radio">
+            <input type="radio" name="question"> Movie
+            </label>
+            <label class = "radio">
+                <input type="radio" name="question"> TV Show
+            </label>
+        </div>
+      </div> -->
+      
+      <div class="field">
+        <label class="label">What genre would you like to watch?</label>
+        <div class="field is-grouped is-grouped-multiline">
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="28"> Action
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="12"> Adventure
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="16"> Animation
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="35"> Comedy
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="80"> Crime
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="99"> Documentary
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="18"> Drama
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="10751"> Family
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="14"> Fantasy
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="36"> History
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="27"> Horror
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="10402"> Music
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="9648"> Mystery
+                </label>
+              </a>
+            </p>
+            <p class="control">
+                <a class="button">
+                    <label class = "checkbox">
+                        <input type="checkbox" name="10749"> Romance
+                    </label>
+                </a>
+              </p>
+              <p class="control">
+                <a class="button">
+                    <label class = "checkbox">
+                        <input type="checkbox" name="878"> Science Fiction
+                    </label>
+                </a>
+              </p>
+              <p class="control">
+                <a class="button">
+                    <label class = "checkbox">
+                        <input type="checkbox" name="10770"> TV Movie
+                    </label>
+                </a>
+              </p>
+              <p class="control">
+                <a class="button">
+                    <label class = "checkbox">
+                        <input type="checkbox" name="53"> Thriller
+                    </label>
+                </a>
+              </p>
+              <p class="control">
+                <a class="button">
+                    <label class = "checkbox">
+                        <input type="checkbox" name="10752"> War
+                    </label>
+                </a>
+              </p>
+              <p class="control">
+                <a class="button">
+                    <label class = "checkbox">
+                        <input type="checkbox" name="37"> Western
+                    </label>
+                </a>
+              </p>
+          </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">What content rating would you like to have?</label>
+        <div class="field is-grouped is-grouped-multiline">
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="28"> NR
+                </label>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button">
+                <label class = "checkbox">
+                    <input type="checkbox" name="12"> G
+                </label>
+              </a>
+            </p>
+            <p class="control">
+                <a class="button">
+                  <label class = "checkbox">
+                      <input type="checkbox" name="12"> PG
+                  </label>
+                </a>
+              </p>
+              <p class="control">
+                <a class="button">
+                  <label class = "checkbox">
+                      <input type="checkbox" name="12"> PG-13
+                  </label>
+                </a>
+              </p>
+              <p class="control">
+                <a class="button">
+                  <label class = "checkbox">
+                      <input type="checkbox" name="12"> R
+                  </label>
+                </a>
+              </p>
+              <p class="control">
+                <a class="button">
+                  <label class = "checkbox">
+                      <input type="checkbox" name="12"> NC-17
+                  </label>
+                </a>
+              </p>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Release dates</label>
+        <div class="columns">
+          <div class="column">
+            <label class="label">From:</label>
+            <input class="input" type="date" placeholder="datepicker here">
+          </div>
+          <div class="column">
+              <label class="label">To:</label>
+              <input class="input" type="date" placeholder="datepicker here">
+          </div>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Minimum User Rating</label>
+        <div class="control">
+          <div class="select">
+              <select>
+                  <option>5 Stars</option>
+                  <option>4 Stars</option>
+                  <option>3 Stars</option>
+                  <option>2 Stars</option>
+                  <option>1 Star</option>
+                  <option>No Stars</option>
+              </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+          <label class="label">Enter desired maximum runtime (in minutes)</label>
+          <input class="input" type="number">
+      </div>
+      
+      
+      
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Submit</button>
+        </div>
+        <div class="control">
+          <a href="index.html"><button class="button is-link is-light">Cancel</button></a>
+        </div>
+      </div>
+      </div>
+</main>
+
+  
+
+    
+</body>
+<footer class="ourFooter">
+    <div  class="ourFooterContainer">
+      <p>
+        <a id="commontext" href="https://github.com/fusionneo" target="_blank">---- Jorge Gonzalez ---</a> 
+        <a id="commontext" href="https://github.com/Jdiaz240" target="_blank">Joshua Diaz ---</a> 
+        <a id="commontext" href="https://github.com/jkstone321" target="_blank">Jordan Stone ---</a> 
+        <a id="commontext" href="https://github.com/Droessling94" target="_blank">Donaldson Roessling ----</a> 
+      </p>
+    </div>
+  </footer>
+  <script src="./assets/script.js"></script>
+</html>
