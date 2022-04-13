@@ -1,98 +1,33 @@
-var clientID = "86r14t0e30c28isroziyi3f0m1b3bo";
-var clientSecret = "73dsrf43drt9m7rfhhmjpgbxzca8r3";
-
-var accessToken;
-
-var authURL = "https://id.twitch.tv/oauth2/token?client_id=86r14t0e30c28isroziyi3f0m1b3bo&client_secret=73dsrf43drt9m7rfhhmjpgbxzca8r3&grant_type=client_credentials";
-var apiURL =  "https://api.igdb.com/v4/games"
-
-// if ($("checkbox")).is(':checked') {
-//     var buttonValue = $(this).val();
-//     console.log(buttonValue);
-// });
-
-// function checkboxValue() {
-// if($("#31").is(':checked'))
-//   console.log($this.value)
-// else
-//   console.log("unchecked") 
-// }
-
-var array = [];
-
-    //STORES GENRES SELECTED INTO ARRAY AND THEN TURNS THAT ARRAY INTO STRING
-    //ADDS THE GENRE TO THE OBJECT
-    var checkedBoxes = document.querySelectorAll("input[id=genre]:checked");
-    for (var i = 0; i < checkedBoxes.length; i++) {
-        array.push(checkedBoxes[i].name)
-    }
-    userInputs.genre = array.join(",");
-
-
-
-var requestOptions = {
-    method: 'POST',
-    redirect: 'follow'
-};
-  
-fetch(authURL, requestOptions)
-.then(function (response) {
-    return response.json();
-})
-.then(function(data) {
-    accessToken = data.access_token;
-    console.log(accessToken)
-    return accessToken;
-})
-
-
-function test() {
-  var myHeaders = new Headers();
-    myHeaders.append("Client-ID", "86r14t0e30c28isroziyi3f0m1b3bo");
-    myHeaders.append("Authorization", "Bearer " + accessToken);
-    myHeaders.append("Access-Control-Allow-Origin", "*");
-    myHeaders.append("Content-Type", "*");
-
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-  };
-
-  fetch("https://floating-headland-95050.herokuapp.com/api.igdb.com/v4/genres/", requestOptions)
-  .then(function (response) {
-    return response.json();
-    console.log(response)
-  })
-  .then(function(data) {
-    console.log(data)
-  })
+gameUserInputs = {
+    genre: "",
+    theme: "",
+    platform: "",
 }
 
-setTimeout(test, 1000)
+document.querySelector("#submitBtn").addEventListener("click", function() {
+  var array = [];
 
+  //STORES ALL CHENCKED GENRES INTO OBJECT
+  var checkedBoxes = document.querySelectorAll("input[id=genre]:checked");
+  for (var i = 0; i < checkedBoxes.length; i++) {
+    array.push(checkedBoxes[i].value)
+  }
+  gameUserInputs.genre = array.join(",");
 
+  //STORES ALL CHECKED THEMES INTO OBJECT
+  array = [];
+  checkedBoxes = document.querySelectorAll("input[id=theme]:checked");
+  for (var i = 0; i < checkedBoxes.length; i++) {
+    array.push(checkedBoxes[i].value)
+  }
+  gameUserInputs.theme = array.join(",");
 
-//lines 59-70 are for movie api
-var mKey = "a8ef916164f716884135094e19f6727b";
-var mApiUrl = "https://api.themoviedb.org/3/movie/550?api_key=" + mKey;
-function getMovies() {
-  fetch(mApiUrl)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-  })
-}
-setTimeout(getMovies, 1000)
-
-var genreSel = document.querySelector("button");
-
-
-
-genreSel.addEventListener("click", function() {
-  document.getElementById("").innerHTML = "";
+  //STORES ALL CHECKED PLATFORM INTO OBJECT
+  array = [];
+  checkedBoxes = document.querySelectorAll("input[id=platform]:checked");
+  for (var i = 0; i < checkedBoxes.length; i++) {
+    array.push(checkedBoxes[i].value)
+  }
+  gameUserInputs.platform = array.join(",");
+  console.log(gameUserInputs);
 });
-
-setTimeout(test, 1000)
