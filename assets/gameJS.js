@@ -49,32 +49,4 @@ function test() {
     console.log(data)
   })
 }
-<<<<<<< HEAD:assets/java.js
 setTimeout(test, 1000)
-
-
-
-//lines 59-70 are for movie api
-var mKey = "a8ef916164f716884135094e19f6727b";
-var mApiUrl = "https://api.themoviedb.org/3/movie/550?api_key=" + mKey;
-function getMovies() {
-  fetch(mApiUrl)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-  })
-}
-setTimeout(getMovies, 1000)
-
-var genreSel = document.querySelector("button");
-
-var genre =;
-
-genreSel.addEventListener("click", function() {
-  document.getElementById("").innerHTML = "";
-});
-=======
-setTimeout(test, 1000)
->>>>>>> a560e376d1b1c7dbc773c7a585f70d7fb259e84d:assets/gameJS.js
