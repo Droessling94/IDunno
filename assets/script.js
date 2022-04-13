@@ -69,8 +69,8 @@ function getMovies(searchedMovie) {
   })
 };
 
+setTimeout(getMovies("Spiderman"), 1000)
 
-// setTimeout(getMovies("Spiderman"), 1000)
 
 //*************Cheeky Design JS********//
 const resultCardFrontFace = document.querySelector(".listFront");
