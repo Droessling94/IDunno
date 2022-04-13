@@ -68,3 +68,23 @@ function getMovies(searchedMovie) {
   })
 };
 setTimeout(getMovies("Spiderman"), 1000)
+
+//*************Cheeky Design JS********//
+const resultCardFrontFace = document.querySelector(".listFront");
+const resultCardBackFace = document.querySelector(".listBack");
+const resultsCardFlipLocation = document.querySelector(".innerResultContainer");
+const backBtn = document.querySelector(".backBtn");
+const nextBtn = document.querySelector(".nextBtn");
+function toggleHide (){
+  resultCardFrontFace.classList.toggle('hidden');
+  resultCardBackFace.classList.toggle('hidden');
+}
+backBtn.addEventListener('click', function(){
+  resultsCardFlipLocation.classList.toggle('flipped');
+  setTimeout(toggleHide,125)
+});
+
+nextBtn.addEventListener('click', function(){
+  resultsCardFlipLocation.classList.toggle('flipped');
+  setTimeout(toggleHide,240)
+});
