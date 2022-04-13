@@ -24,11 +24,9 @@ h2 {
     margin: 20% 0%;
 }
 
-button {
+.button {
     margin: 10% 0%;
-    color: white;
-    background-color: black;
-    border-radius: 10%;
+    color: black;
     padding: 2%;
 }
 
