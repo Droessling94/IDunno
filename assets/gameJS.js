@@ -6,10 +6,29 @@ var accessToken;
 var authURL = "https://id.twitch.tv/oauth2/token?client_id=86r14t0e30c28isroziyi3f0m1b3bo&client_secret=73dsrf43drt9m7rfhhmjpgbxzca8r3&grant_type=client_credentials";
 var apiURL =  "https://api.igdb.com/v4/games"
 
-$("button").click(function() {
-    var buttonValue = $(this).val();
-    console.log(buttonValue);
-});
+// if ($("checkbox")).is(':checked') {
+//     var buttonValue = $(this).val();
+//     console.log(buttonValue);
+// });
+
+// function checkboxValue() {
+// if($("#31").is(':checked'))
+//   console.log($this.value)
+// else
+//   console.log("unchecked") 
+// }
+
+var array = [];
+
+    //STORES GENRES SELECTED INTO ARRAY AND THEN TURNS THAT ARRAY INTO STRING
+    //ADDS THE GENRE TO THE OBJECT
+    var checkedBoxes = document.querySelectorAll("input[id=genre]:checked");
+    for (var i = 0; i < checkedBoxes.length; i++) {
+        array.push(checkedBoxes[i].name)
+    }
+    userInputs.genre = array.join(",");
+
+
 
 var requestOptions = {
     method: 'POST',
@@ -49,4 +68,31 @@ function test() {
     console.log(data)
   })
 }
+
+setTimeout(test, 1000)
+
+
+
+//lines 59-70 are for movie api
+var mKey = "a8ef916164f716884135094e19f6727b";
+var mApiUrl = "https://api.themoviedb.org/3/movie/550?api_key=" + mKey;
+function getMovies() {
+  fetch(mApiUrl)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+  })
+}
+setTimeout(getMovies, 1000)
+
+var genreSel = document.querySelector("button");
+
+
+
+genreSel.addEventListener("click", function() {
+  document.getElementById("").innerHTML = "";
+});
+
 setTimeout(test, 1000)
