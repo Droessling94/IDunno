@@ -1,4 +1,4 @@
-gameUserInputs = {
+var gameUserInputs = {
     genre: "",
     theme: "",
     platform: "",
