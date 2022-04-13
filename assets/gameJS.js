@@ -49,7 +49,7 @@ function test() {
     console.log(data)
   })
 }
-<<<<<<< HEAD:assets/java.js
+
 setTimeout(test, 1000)
 
 
@@ -75,6 +75,5 @@ var genre =;
 genreSel.addEventListener("click", function() {
   document.getElementById("").innerHTML = "";
 });
-=======
+
 setTimeout(test, 1000)
->>>>>>> a560e376d1b1c7dbc773c7a585f70d7fb259e84d:assets/gameJS.js
