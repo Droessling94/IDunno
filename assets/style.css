@@ -38,9 +38,12 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 25vh;
+    background-color: rgb(20, 20, 20);
 }
 
 .ourFooter {
+    position: sticky;
     height: 5vh;
     max-height:20%;
     width: 100%;
@@ -52,7 +55,7 @@ button {
     max-height: 100%;
     width: 100%;
     max-width:100%;
-    background-color: rgb(68, 68, 68);
+    background-color: rgb(20, 20, 20);
     display: flex;
     flex-direction: row;
     justify-content: center ;
@@ -87,3 +90,76 @@ button {
     background-image: url("./pickolascage.jpg");
 }
 
+.resultContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(41, 41, 41);
+    position: relative;
+    width: 100%;
+    height: 70vh;
+}
+.innerResultContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+    height: 80%;
+    width: 50%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    background-color: rgb(20, 20, 20);
+    border-radius: 25px;
+    box-shadow: 0px 4px 11px 3px rgba(0,0,0,0.34);
+}
+.innerResultContainer.flipped {
+    transform: rotateY(180deg);
+  }
+
+.listFront{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+.listBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    transform: rotateY(180deg);
+}
+.resultImg{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height:45%;
+    max-height: 50%;
+    width: 30%;
+    max-width: 35;
+    overflow: hidden;
+}
+.hidden {
+    transform: rotateY(180deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.listInfo{
+    width: 100%;
+    max-width: 100%;
+    height:10%;
+    max-height: 15%;
+    border-top: 2px dashed rgb(15, 206, 25);
+    text-align: center;
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+    color: antiquewhite;
+}
