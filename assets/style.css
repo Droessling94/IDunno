@@ -63,8 +63,6 @@ h2 {
     justify-content: center ;
     flex-wrap: wrap;
     padding: .25%;
-
-
 }
 
 #logo {
@@ -127,9 +125,8 @@ h2 {
     display: flex;
     align-items: center;
     flex-direction: column;
-
-
 }
+
 .listBack {
     position: absolute;
     width: 100%;
@@ -137,9 +134,9 @@ h2 {
     display: flex;
     align-items: center;
     flex-direction: column;
-
     transform: rotateY(180deg);
 }
+
 .resultImg{
     margin-top: 20px;
     margin-bottom: 20px;
