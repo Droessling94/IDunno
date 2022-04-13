@@ -52,7 +52,7 @@ function test() {
     console.log(data)
   })
 }
-setTimeout(test, 1000)
+setTimeout(test, 2000)
 
 
 //********BELOW HOLDS MOVIE API FETCH AND PARSE INFO*************//
@@ -60,12 +60,14 @@ var mKey = "a8ef916164f716884135094e19f6727b";
 var mApiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${mKey}`;
 function getMovies(searchedMovie) {
   fetch(mApiUrl + `&query=${searchedMovie}`)
+
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
     console.log(data);
   })
+
 };
 setTimeout(getMovies("Spiderman"), 1000)
 
@@ -88,3 +90,6 @@ nextBtn.addEventListener('click', function(){
   resultsCardFlipLocation.classList.toggle('flipped');
   setTimeout(toggleHide,240)
 });
+
+
+setTimeout(getMovies("Spiderman"), 2000);
