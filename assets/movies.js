@@ -1,11 +1,7 @@
-var movieUserInputs = {
-    genre: "",
-    contentRating: "",
-    minYear: "",
-    maxYear: "",
-    minRating: "",
-    maxRuntime: "",
-}
+
+var userInputs = {
+
+
 
 document.querySelector("#submitBtn").addEventListener("click", function() {
     var array = [];
@@ -16,7 +12,9 @@ document.querySelector("#submitBtn").addEventListener("click", function() {
     for (var i = 0; i < checkedBoxes.length; i++) {
         array.push(checkedBoxes[i].name)
     }
-    movieUserInputs.genre = array.join(",");
+
+    userInputs.genre = array.join(",");
+
 
     //STORES CONTENT RATING AFTER EMPTYING THE PREVIOUS DATA FROM ARRAY
     array = [];
@@ -24,7 +22,9 @@ document.querySelector("#submitBtn").addEventListener("click", function() {
     for (var i = 0; i < checkedBoxes.length; i++) {
         array.push(checkedBoxes[i].name)
     }
-    movieUserInputs.contentRating = array.join(",");
+
+    userInputs.contentRating = array.join(",");
+
     
     //GETS MIN YEAR
     var selected = document.querySelector("#min-year");
@@ -34,16 +34,18 @@ document.querySelector("#submitBtn").addEventListener("click", function() {
     //GETS MIN YEAR
     selected = document.querySelector("#max-year");
     year = selected.value;
-    movieUserInputs.maxYear = year.substring(0,4);
+
+    userInputs.maxYear = year.substring(0,4);
 
     //GETS SELECTED MIN USER RATING
     selected = document.querySelector("#user-rating");
-    movieUserInputs.minRating = selected.value;
+    userInputs.minRating = selected.value;
 
     //GETS SELECTED MAX RUNTIME
     selected = document.querySelector("#max-runtime");
-    movieUserInputs.maxRuntime = selected.value;
+    userInputs.maxRuntime = selected.value;
 
-    console.log(movieUserInputs);
+    console.log(userInputs);
+
 
 });

@@ -67,7 +67,9 @@ function getMovies(searchedMovie) {
   .then(function (data) {
     console.log(data);
   })
+
 };
+
 
 setTimeout(getMovies("Spiderman"), 1000)
 
