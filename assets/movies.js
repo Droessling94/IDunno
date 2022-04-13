@@ -53,6 +53,8 @@ document.querySelector("#submitBtn").addEventListener("click", function() {
 
     console.log(movieUserInputs);
 
+    localStorage.setItem("movie-inputs", JSON.stringify(movieUserInputs));
+
 var userInputURL = `https://api.themoviedb.org/3/discover/movie?api_key=${mKey}&genre=${movieUserInputs.genre}&certification_country=US&certification.gte=${movieUserInputs.certification}&primary_release_date.lte=${movieUserInputs.maxYear}&primary_release_date.gte=${movieUserInputs.minYear}&vote_average.gte=${movieUserInputs.minRating}&with_runtime.lte=${movieUserInputs.maxRuntime}`
 
 var requestOptions = {
