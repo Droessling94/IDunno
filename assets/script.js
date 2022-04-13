@@ -67,10 +67,10 @@ function getMovies(searchedMovie) {
   .then(function (data) {
     console.log(data);
   })
-}
-
 };
-setTimeout(getMovies("Spiderman"), 1000)
+
+
+// setTimeout(getMovies("Spiderman"), 1000)
 
 //*************Cheeky Design JS********//
 const resultCardFrontFace = document.querySelector(".listFront");
@@ -92,5 +92,55 @@ nextBtn.addEventListener('click', function(){
   setTimeout(toggleHide,240)
 });
 
+//*******************SEARCH HTML FUNCTIONALITY******************//
 
-setTimeout(getMovies("Spiderman"), 2000);
+var mApiUrlLatest = `https://api.themoviedb.org/3/movie/latest?api_key=${mKey}&language=en-US`;
+var randomMovie;
+
+///updates latestNumber to be used in the random number function
+function getLatestNumber() {
+  fetch(mApiUrlLatest)
+
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    return data
+  })
+  .then(function(latestMovie){
+    console.log(latestMovie);
+    latestNumber = latestMovie.id
+    console.log(latestNumber);
+    return latestNumber
+  })
+  .then(function getRandomMovie(latestNumber) {
+    let rand = Math.random() * latestNumber;
+    console.log(rand);
+    rand = Math.floor(rand);
+    console.log(rand);
+    randomMovieId = rand;
+    console.log(randomMovieId);
+    return randomMovieId;
+  })
+  .then(function getMovies(randomMovieId) {
+    fetch(`https://api.themoviedb.org/3/movie/${randomMovieId}` + `?api_key=${mKey}`)
+  .then(function (response) {
+    console.log(response.ok);
+
+    if(!response.ok){ getLatestNumber();
+    }else{return response.json();}
+  })
+  .then( function(data){
+    console.log(data);
+    randomMovie = data;
+    console.log(randomMovie);
+  })
+  })
+};
+
+
+getLatestNumber();
+setTimeout(function(){
+  console.log(randomMovie);
+},1000);
