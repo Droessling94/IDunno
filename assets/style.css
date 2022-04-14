@@ -170,3 +170,13 @@ h2 {
     font-size: x-large;
     color: antiquewhite;
 }
+#scaled{
+    height: 100%;
+    width: 27%;
+    display: inline;
+    float: left;
+}
+li{
+    list-style: none;
+    height: 30%;
+}
