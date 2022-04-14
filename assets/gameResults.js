@@ -4,10 +4,11 @@
 // const resultCardBackFace = document.querySelector(".listBack");
 // const resultsCardFlipLocation = document.querySelector(".innerResultContainer");
 
-// This grabs the back button and front button, which we will use to update our game selection.
+// This grabs the back, next, and save buttons, which we will use to update our game selection.
 
 const backBtn = document.querySelector(".backBtn");
 const nextBtn = document.querySelector(".nextBtn");
+const saveBtn = document.querySelector(".saveBtn");
 
 //This creates empty global variables for us to manipulate later on.
 
@@ -15,6 +16,8 @@ var currentGame = [];
 var gameName;
 var gameRating;
 var gameSummary;
+var gameID;
+var favoriteGames = [];
 
 var gameObjectString = localStorage.getItem('gameObject');
 var gameObjects = JSON.parse(gameObjectString);
@@ -34,12 +37,15 @@ function getCurrentGame() {
       else {
         gameRating = "Rating: " + gameRating + "/100";
       }
-  gameSummary = "Summary: " + currentGame.summary; 
+  gameSummary = "Summary: " + currentGame.summary;
+  gameID = currentGame.id;
 }
 
 // We run the function once to display the content on the screen.
 
 getCurrentGame();
+
+console.log(currentGame);
 
 // function toggleHide (){
 //   resultCardFrontFace.classList.toggle('hidden');
@@ -72,6 +78,12 @@ nextBtn.addEventListener('click', function(){
   $("#summary1").text(gameSummary);
 
   console.log(index);
+})
+
+saveBtn.addEventListener('click', function(){
+  favoriteGames.push(gameID);
+  localStorage.setItem('favoriteGameIDs', JSON.stringify(favoriteGames));
+  console.log("Saved Game ID to local storage!");
 })
 
 $("#resultName1").text(gameName);
