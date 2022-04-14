@@ -11,7 +11,7 @@ var movieUserInputs = JSON.parse(localStorage.getItem("movieLocallyStoreds"));
 var gameUserInputs = JSON.parse(localStorage.getItem("game-inputs"));
 var dynoChosenUrl = `https://api.themoviedb.org/3/discover/movie?`
 var mKey = "a8ef916164f716884135094e19f6727b";
-
+var movieFavorites = [];
 var mApiUrlLatest = `https://api.themoviedb.org/3/movie/latest?api_key=${mKey}&language=en-US`;
 var randomMovie;
 var randomNumber;
@@ -217,6 +217,7 @@ const resultCardBackFace = document.querySelector(".listBack");
 const resultsCardFlipLocation = document.querySelector(".innerResultContainer");
 const backBtn = document.querySelector(".backBtn");
 const nextBtn = document.querySelector(".nextBtn");
+const saveBtn = document.querySelector(".saveBtn");
 var nextBtnclicked = 0;
 var backBtnclicked = 0;
 function toggleHide (){
@@ -394,6 +395,18 @@ nextBtn.addEventListener('click', function(){
     
   }
 });
+saveBtn.addEventListener('click', function(){
+  console.log(movieFavorites);
+  if(nextBtnclicked=0){
+    movieFavorites.push(nowNext[0].id);
+  }else if(nextBtnclicked = 1){
+    movieFavorites.push(nowNext[1].id);
+  }else if(nextBtnclicked = 2){
+    movieFavorites.push(nowNext[0].id);
+  }else{
+    movieFavorites.push(nowNext[1].id);
+  }
+});
 //****on hitting movies result page this starts to get you your first result and change info*/
 getResult();
 getNewResult();
@@ -443,4 +456,3 @@ setTimeout(function(){
     })
   };
 },800);
-
