@@ -4,18 +4,6 @@ var myFavoriteGames = ["12519", "12345", "23456", "12312", "35645"];
 var newLi;
 var newImg;
 
-
-
-
-
-
-
-
-
-
-
-
-
 // SCRIPT FOR SHOWING FAVORITES LIST ON INDEX.HTML
 window.onload = function() {
   if(myFavoriteMovies !== null) {
@@ -64,45 +52,31 @@ window.onload = function() {
             myHeaders.append("Authorization", "Bearer " + accessToken);
             
             for(var x = 0; x < myFavoriteGames.length; x++){
-            var raw = "fields *; \r\nwhere (id = ("+myFavoriteGames[x]+"));";
+                var raw = "fields *; \r\nwhere (id = ("+myFavoriteGames[x]+"));";
 
-            var requestOptions2 = {
-            method: 'POST',
-            headers: myHeaders,
-            body:  raw,
-            redirect: 'follow'
-            };
-            
-            fetch("https://fusion-corsproxy.herokuapp.com/https://api.igdb.com/v4/games", requestOptions2)
-            .then(response => response.json())
-            .then(function(data) {
-                console.log(data);
-                name = data[0].name;
-                newLi = document.createElement("li");
-                newLi.classList = "card";
-                newLi.textContent = name;
-                newImg = document.createElement("img");
-                newImg.setAttribute("id", "scaled");
-                fetch("https://fusion-corsproxy.herokuapp.com/https://api.igdb.com/v4/covers", requestOptions2)
+                var requestOptions2 = {
+                method: 'POST',
+                headers: myHeaders,
+                body:  raw,
+                redirect: 'follow'
+                };
+                
+                fetch("https://fusion-corsproxy.herokuapp.com/https://api.igdb.com/v4/games", requestOptions2)
                 .then(response => response.json())
-                .then(function(results) {
-                    console.log(results);
-                    var imgUrl = results[0].image_id;
-                    console.log(imgUrl);
-                    newImg.src = "https://images.igdb.com/igdb/image/upload/t_thumb/"+imgUrl+".jpg"
+                .then(function(data) {
+                    console.log(data);
+                    name = data[0].name;
+                    newLi = document.createElement("li");
+                    newLi.classList = "card";
+                    newLi.textContent = name;
+                    newImg = document.createElement("img");
+                    newImg.setAttribute("id", "scaled");
+                    newImg.src = "./assets/pickolascage.jpg";
+                    newLi.prepend(newImg)
+                    document.querySelector(".my-favorites-list").append(newLi);
                 })
                 .catch(error => console.log('error', error));
-                newLi.prepend(newImg)
-                document.querySelector(".my-favorites-list").append(newLi);
-            })
-            .catch(error => console.log('error', error));
-        }
-        
-        })
-
-        
-  }
-  }
-
-    
-;
+            }
+        })   
+    }
+}
