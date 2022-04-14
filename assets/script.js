@@ -14,7 +14,7 @@ var mKey = "a8ef916164f716884135094e19f6727b";
 
 var mApiUrlLatest = `https://api.themoviedb.org/3/movie/latest?api_key=${mKey}&language=en-US`;
 var randomMovie;
-
+var randomNumber;
 
 
 // John's web server:
@@ -83,8 +83,16 @@ async function getResult() {
     console.log(response);
     return response;
   })
+  .then(function(data){
+    console.log(data);
+    randomNumber = Math.floor(Math.random() * data.results.length)
+    console.log(randomNumber);
+    return data;
+
+  })
   .then( function(data){
-    randomMovie = data.results[0];
+    console.log(data);
+    randomMovie = data.results[randomNumber];
     console.log(randomMovie);
     if(!nowNext.length){
       nowNext.push(randomMovie);
@@ -108,8 +116,16 @@ async function getNewResult() {
     console.log(response);
     return response;
   })
+  .then(function(data){
+    console.log(data);
+    randomNumber = Math.floor(Math.random() * data.results.length)
+    console.log(randomNumber);
+    return data;
+
+  })
   .then( function(data){
-    randomMovie = data.results[1];
+    console.log(data);
+    randomMovie = data.results[randomNumber];
     console.log(randomMovie);
     if(!nowNext.length){
       nowNext.push(randomMovie);
@@ -134,8 +150,15 @@ async function getNewResultForFirstTime() {
     console.log(response);
     return response;
   })
+  .then(function(data){
+    console.log(data);
+    randomNumber = Math.floor(Math.random() * data.results.length)
+    console.log(randomNumber);
+    return data;
+
+  })
   .then( function(data){
-    randomMovie = data.results[2];
+    randomMovie = data.results[randomNumber];
     console.log(randomMovie);
     if(!nowNext.length){
       nowNext.push(randomMovie);
