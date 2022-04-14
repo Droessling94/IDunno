@@ -1,4 +1,4 @@
-var myFavoriteMovies = [];
+var myFavoriteMovies = ["675353", "508947", "414906"];
 var myFavoriteGames = []
 //"675353", "508947", "414906"
 var newLi;
