@@ -109,7 +109,7 @@ backBtn.addEventListener('click', function(){
       $("#resultImg1").attr("src", "./assets/pickolascage.jpg");
     },280);
   };
-  if(nextBtnclicked >= 3, backBtnclicked >= 3){
+  if(nextBtnclicked >= 3 & backBtnclicked >= 3){
       window.location.href="https://www.lingscars.com/";  
   };
 });
@@ -215,7 +215,6 @@ nextBtn.addEventListener('click', function(){
         $("#resultOverView2").text(nowNext[1].overview);
       };
       if(!nowNext[1].poster_path){
-        console.log("broke");
          $("#resultImg2").attr("src","./assets/pickolascage.jpg");
       }else{
        fetch(`https://image.tmdb.org/t/p/w500/` + nowNext[1].poster_path)
@@ -284,6 +283,14 @@ function getLatestNumber() {
     if(!response.ok){ getLatestNumber(); 
     }else{return response.json();}
   })
+  .then(function(response){
+    console.log(response);
+    if(response.adult){
+       getLatestNumber()
+    }else{
+      return response;
+    };
+  })
   .then( function(data){
     randomMovie = data;
     if(!nowNext.length){
@@ -338,7 +345,6 @@ setTimeout(function(){
     .then(function(data){
       $("#resultImg1").attr("src", data.url);
     })
- 
   };
 },800);
 
