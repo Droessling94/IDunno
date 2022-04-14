@@ -172,6 +172,16 @@ h2 {
     color: antiquewhite;
 }
 
+#scaled{
+    height: 100%;
+    width: 27%;
+    display: inline;
+    float: left;
+}
+li{
+    list-style: none;
+    height: 150px;
+}
 .saveBtn {
     position: relative;
     top: 42.5%;
@@ -184,4 +194,34 @@ h2 {
     height: 5%;
     width: 20%;
     color:    rgb(20, 20, 20);
+
 }
+.my-favorites-list{
+    max-height: 720px;
+    overflow:auto;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  h3{
+      font-size: 36px;
+      color: green;
+      font-weight: bolder;
+      background-color: black
+  }
