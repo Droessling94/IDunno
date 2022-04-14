@@ -2,9 +2,11 @@
 var clientID = "86r14t0e30c28isroziyi3f0m1b3bo";
 var clientSecret = "73dsrf43drt9m7rfhhmjpgbxzca8r3";
 var accessToken;
+var index = 0;
 
 var authURL = "https://id.twitch.tv/oauth2/token?client_id=86r14t0e30c28isroziyi3f0m1b3bo&client_secret=73dsrf43drt9m7rfhhmjpgbxzca8r3&grant_type=client_credentials";
 var apiURL =  "https://api.igdb.com/v4/games"
+var object;
 
 //Authentication for the IGDB datebase.
 var requestOptions = {
@@ -14,12 +16,10 @@ var requestOptions = {
   
 fetch(authURL, requestOptions)
 .then(function (response) {
-    console.log(response);
     return response.json();
 })
 .then(function(data) {
     accessToken = data.access_token;
-    console.log(accessToken)
     return accessToken;
 })
 
@@ -29,7 +29,8 @@ var gameUserInputs = {
     platform: "",
 }
 
-document.querySelector("#submitBtn").addEventListener("click", function() {
+document.querySelector("#submitBtn").addEventListener("click", async function() {
+  
   var array = [];
 
   //STORES ALL CHECKED GENRES INTO OBJECT
@@ -54,7 +55,6 @@ document.querySelector("#submitBtn").addEventListener("click", function() {
     array.push(checkedBoxes[i].value)
   }
   gameUserInputs.platform = array.join(",");
-  console.log(gameUserInputs);
 
   var myHeaders = new Headers();
     myHeaders.append("Client-ID", "86r14t0e30c28isroziyi3f0m1b3bo");
@@ -62,7 +62,7 @@ document.querySelector("#submitBtn").addEventListener("click", function() {
     myHeaders.append("Access-Control-Allow-Origin", "*");
     myHeaders.append("Content-Type", "*");
 
-var raw = "fields *; \r\nlimit 8; \r\nwhere (platforms = ("+gameUserInputs.platform+") & genres = ("+gameUserInputs.genre+") & themes = ("+gameUserInputs.theme+"));";
+  var raw = "fields *; \r\nlimit 500; \r\nwhere (platforms = ("+gameUserInputs.platform+") & genres = ("+gameUserInputs.genre+") & themes = ("+gameUserInputs.theme+"));";
 
 
     var requestOptions = {
@@ -71,13 +71,31 @@ var raw = "fields *; \r\nlimit 8; \r\nwhere (platforms = ("+gameUserInputs.platf
       body: raw,
       redirect: 'follow'
     };
-
-    console.log(requestOptions)
-    console.log(requestOptions.headers);
-    console.log(requestOptions.body);
     
     fetch("https://fusion-corsproxy.herokuapp.com/https://api.igdb.com/v4/games", requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
+      .then(response => response.json())
+      .then(result => gameObject = result)
       .catch(error => console.log('error', error));
+
+    function storeData() {
+      console.log('Setting local storage...');
+      // console.log(gameObject[index]);
+      // console.log("Name: " + gameObject[index].name);
+      // var rating = ~~gameObject[index].rating
+      //   if (rating == 0) {
+      //     console.log("Rating: Not currently rated");
+      //   }
+      //   else {
+      //     console.log("Rating: " + rating + "/100");
+      //   }
+      // console.log("Summary: " + gameObject[index].summary);
+      // index++;
+
+      localStorage.setItem('gameObject', JSON.stringify(gameObject));
+      console.log('Local storage set!')
+    }
+
+    setTimeout(storeData, 2000);
+
+    
 });
