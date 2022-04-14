@@ -79,23 +79,10 @@ document.querySelector("#submitBtn").addEventListener("click", async function() 
 
     function storeData() {
       console.log('Setting local storage...');
-      // console.log(gameObject[index]);
-      // console.log("Name: " + gameObject[index].name);
-      // var rating = ~~gameObject[index].rating
-      //   if (rating == 0) {
-      //     console.log("Rating: Not currently rated");
-      //   }
-      //   else {
-      //     console.log("Rating: " + rating + "/100");
-      //   }
-      // console.log("Summary: " + gameObject[index].summary);
-      // index++;
 
       localStorage.setItem('gameObject', JSON.stringify(gameObject));
       console.log('Local storage set!')
+      window.location.href = "./gameResults.html"
     }
-
     setTimeout(storeData, 2000);
-
-    
 });
