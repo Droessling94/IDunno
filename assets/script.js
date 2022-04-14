@@ -146,3 +146,4 @@ getLatestNumber();
 setTimeout(function(){
   console.log(randomMovie);
 },1000);
+
