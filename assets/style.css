@@ -172,6 +172,16 @@ h2 {
     color: antiquewhite;
 }
 
+#scaled{
+    height: 100%;
+    width: 27%;
+    display: inline;
+    float: left;
+}
+li{
+    list-style: none;
+    height: 30%;
+
 .saveBtn {
     position: relative;
     top: 42.5%;
@@ -184,6 +194,7 @@ h2 {
     height: 5%;
     width: 20%;
     color:    rgb(20, 20, 20);
+
 
 
 }
