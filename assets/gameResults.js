@@ -17,7 +17,13 @@ var gameName;
 var gameRating;
 var gameSummary;
 var gameID;
-var favoriteGames = [];
+var favoriteGames;
+if(localStorage.getItem("favoriteGameIDs") !== null){
+  var favoriteGames = JSON.parse(localStorage.getItem("favoriteGameIDs"));
+}else {
+  favoriteGames = [];
+}
+
 
 var gameObjectString = localStorage.getItem('gameObject');
 var gameObjects = JSON.parse(gameObjectString);
