@@ -7,6 +7,9 @@ var accessToken;
 var authURL = "https://id.twitch.tv/oauth2/token?client_id=86r14t0e30c28isroziyi3f0m1b3bo&client_secret=73dsrf43drt9m7rfhhmjpgbxzca8r3&grant_type=client_credentials";
 var apiURL =  "https://api.igdb.com/v4/games"
 var nowNext = [];
+var movieUserInputs = JSON.parse(localStorage.getItem("movie-inputs"));
+var gameUserInputs = JSON.parse(localStorage.getItem("game-inputs"));
+
 // John's web server:
 // https://floating-headland-95050.herokuapp.com/
 
@@ -66,6 +69,7 @@ function getMovies(searchedMovie) {
   })
   .then(function (data) {
   })
+
 };
 
 
