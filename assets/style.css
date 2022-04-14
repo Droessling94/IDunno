@@ -225,3 +225,6 @@ li{
       font-weight: bolder;
       background-color: black
   }
+#clear-btn{
+    margin: 0;
+}

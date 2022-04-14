@@ -1,5 +1,5 @@
-var myFavoriteMovies = ["675353", "508947", "414906"];
-var myFavoriteGames = ["12519", "12345", "23456", "12312", "35645"];
+var myFavoriteMovies = [];
+var myFavoriteGames = JSON.parse(localStorage.getItem("favoriteGameIDs"));
 //"675353", "508947", "414906"
 var newLi;
 var newImg;
@@ -80,3 +80,13 @@ window.onload = function() {
         })   
     }
 }
+var clrBtn = document.getElementById("clear-btn");
+if(clrBtn){
+    clrBtn.addEventListener("click", function() {
+        myFavoriteGames = [];
+        myFavoriteMovies = [];
+        localStorage.removeItem("favoriteGameIDs");
+        document.querySelector(".my-favorites-list").innerHTML = "";
+    });
+}
+    
