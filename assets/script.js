@@ -7,8 +7,15 @@ var accessToken;
 var authURL = "https://id.twitch.tv/oauth2/token?client_id=86r14t0e30c28isroziyi3f0m1b3bo&client_secret=73dsrf43drt9m7rfhhmjpgbxzca8r3&grant_type=client_credentials";
 var apiURL =  "https://api.igdb.com/v4/games"
 var nowNext = [];
-var movieUserInputs = JSON.parse(localStorage.getItem("movie-inputs"));
+var movieUserInputs = JSON.parse(localStorage.getItem("movieLocallyStoreds"));
 var gameUserInputs = JSON.parse(localStorage.getItem("game-inputs"));
+var dynoChosenUrl = `https://api.themoviedb.org/3/discover/movie?`
+var mKey = "a8ef916164f716884135094e19f6727b";
+
+var mApiUrlLatest = `https://api.themoviedb.org/3/movie/latest?api_key=${mKey}&language=en-US`;
+var randomMovie;
+
+
 
 // John's web server:
 // https://floating-headland-95050.herokuapp.com/
@@ -58,24 +65,130 @@ function test() {
 setTimeout(test, 2000);
 
 
-//********BELOW HOLDS MOVIE API FETCH AND PARSE INFO*************//
-var mKey = "a8ef916164f716884135094e19f6727b";
-var mApiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${mKey}`;
-function getMovies(searchedMovie) {
-  fetch(mApiUrl + `&query=${searchedMovie}`)
-
+//************BELOW IS THE FUNCTIONALITY TO CHOOSE A RANDOM MOVIE****************//
+var movieLocallyStored;
+async function getResult() { 
+  movieLocallyStored = JSON.parse(localStorage.getItem("movie-inputs"));
+  getChosenRandomMovieUrl(movieLocallyStored);
+  await fetch(dynoChosenUrl)
   .then(function (response) {
-    return response.json();
+    console.log(response.ok);
+    if(!response.ok){
+      dynoChosenUrl = "`https://api.themoviedb.org/3/discover/movie?`";
+      getResult(); 
+    }else{return response.json();
+    }
   })
-  .then(function (data) {
+  .then(function(response){
+    console.log(response);
+    return response;
   })
+  .then( function(data){
+    randomMovie = data.results[0];
+    console.log(randomMovie);
+    if(!nowNext.length){
+      nowNext.push(randomMovie);
+      console.log(nowNext);
+    };
+  });
+};
+async function getNewResult() { 
+  movieLocallyStored = JSON.parse(localStorage.getItem("movie-inputs"));
+  getChosenRandomMovieUrl(movieLocallyStored);
+  await fetch(dynoChosenUrl)
+  .then(function (response) {
+    console.log(response.ok);
+    if(!response.ok){
+      dynoChosenUrl = "`https://api.themoviedb.org/3/discover/movie?`";
+      getNewResult(); 
+    }else{return response.json();
+    }
+  })
+  .then(function(response){
+    console.log(response);
+    return response;
+  })
+  .then( function(data){
+    randomMovie = data.results[1];
+    console.log(randomMovie);
+    if(!nowNext.length){
+      nowNext.push(randomMovie);
+      console.log(nowNext);
+    };
+  });
+};
 
+async function getNewResultForFirstTime() { 
+  movieLocallyStored = JSON.parse(localStorage.getItem("movie-inputs"));
+  getChosenRandomMovieUrl(movieLocallyStored);
+  await fetch(dynoChosenUrl)
+  .then(function (response) {
+    console.log(response.ok);
+    if(!response.ok){
+      dynoChosenUrl = "`https://api.themoviedb.org/3/discover/movie?`";
+      getNewResult(); 
+    }else{return response.json();
+    }
+  })
+  .then(function(response){
+    console.log(response);
+    return response;
+  })
+  .then( function(data){
+    randomMovie = data.results[2];
+    console.log(randomMovie);
+    if(!nowNext.length){
+      nowNext.push(randomMovie);
+      console.log(nowNext);
+    };
+  });
 };
 
 
-setTimeout(getMovies("Spiderman"), 1000)
 
-//*************Cheeky Design JS********//
+//************BELOW IS THE FUNCTIONALITY TO CHOOSE A RANDOM MOVIE****************//
+
+  function getChosenRandomMovieUrl(movieLocallyStored){ ///"movieLocallyStored is the object from local that has the user choices"
+    if(!movieLocallyStored.genre){
+      console.log("you chose no genre");
+    }else{
+      dynoChosenUrl = dynoChosenUrl + `with_genres=${movieLocallyStored.genre}`;
+    };
+    if(!movieLocallyStored.minYear){
+      console.log("you chose no bottom level release date");
+    }else{
+      dynoChosenUrl = dynoChosenUrl + `&release_date.gte=${movieLocallyStored.minYear}`;
+    };
+    if(!movieLocallyStored.maxYear){
+      console.log("you chose no bottom level release date");
+    }else{
+      dynoChosenUrl = dynoChosenUrl + `&release_date.lte=${movieLocallyStored.maxYear}`;
+    };
+    if(!movieLocallyStored.maxYear){
+      console.log("you chose no top level release date");
+    }else{
+      dynoChosenUrl = dynoChosenUrl + `&release_date.lte=${movieLocallyStored.maxYear}`;
+    };
+    if(!movieLocallyStored.minRating){
+      console.log("you chose no minimum rating");
+    }else{
+      dynoChosenUrl = dynoChosenUrl + `&vote_average.gte=${movieLocallyStored.minRating}`;
+    };
+    if(!movieLocallyStored.maxRuntime){
+      console.log("you chose no maximum runtime");
+    }else{
+      dynoChosenUrl = dynoChosenUrl + `&with_runtime.lte=${movieLocallyStored.maxRuntime}`;
+    };
+    if(!movieLocallyStored.contentRating){
+      console.log("you chose no content rating");
+    }else{
+      dynoChosenUrl = dynoChosenUrl + `&certification_country=US&certification=${movieLocallyStored.contentRating}`;
+    };
+    dynoChosenUrl= dynoChosenUrl + `&api_key=${mKey}&language=en-US`
+    console.log(dynoChosenUrl);
+  };
+
+  //*************Cheeky Design JS********//
 const resultCardFrontFace = document.querySelector(".listFront");
 const resultCardBackFace = document.querySelector(".listBack");
 const resultsCardFlipLocation = document.querySelector(".innerResultContainer");
@@ -87,6 +200,8 @@ function toggleHide (){
   resultCardFrontFace.classList.toggle('hidden');
   resultCardBackFace.classList.toggle('hidden');
 }
+
+
 backBtn.addEventListener('click', function(){
   backBtnclicked++;
   resultsCardFlipLocation.classList.toggle('flipped');
@@ -118,20 +233,23 @@ nextBtn.addEventListener('click', function(){
   nextBtnclicked++;
   resultsCardFlipLocation.classList.toggle('flipped');
   setTimeout(toggleHide,280);
+  console.log(nowNext);
   if(nextBtnclicked < 3){
-    if(nowNext.length <= 2){
+    if(nowNext.length <= 3){
       console.log(nowNext);
-      getLatestNumber();
+
       setTimeout(function(){
-        nowNext.push(randomMovie);
+        getNewResult();
+        nowNext.push(randomMovie)
+        console.log(nowNext);
       },240);
   
-    }else if(nowNext.length > 3){
+    }else if(nowNext.length > 4){
       nowNext.shift();
       console.log(nowNext);
     }else {
       nowNext.shift();
-      getLatestNumber();
+      getNewResult();
       setTimeout(function(){
         nowNext.push(randomMovie);
       },240);
@@ -139,52 +257,56 @@ nextBtn.addEventListener('click', function(){
     };
     ///updating info after next click///
     setTimeout( function(){
-      if(nowNext[2].title = ""){
-        $("#resultName1").text("Apparently this one doesnt have a name");
+      if(nowNext.length <= 2){
+        console.log("Man im hoping this works");
       }else{
-        $("#resultName1").text("Title:" + nowNext[2].title);
-      };
-      if(!nowNext[2].release_date){
-        $("#reasultRelease1").text("or a release Date");
-      }else{
-        $("#reasultRelease1").text("Release Date:" + nowNext[2].release_date);
-      };
-      if(nowNext[2].genres.length > 0){
-        $("#resultGenre1").text(nowNext[2].genres[0].name);
-      }else {
-        $("#resultGenre1").text("wow no genre");
-      };
-      if(!nowNext[2].runtime){
-        $("#resultRuntime1").text("Length: So short its not even defined. Yea you've already finished it");
-      }else{
-        $("#resultRuntime1").text("Length:" + (nowNext[2].runtime / 60) + " Hours");
-      };
-      if(!nowNext[2].popularity){
-        $("#resultRating1").text("No one likes this, trust us you wouldnt either");
-      }else{
-        $("#resultRating1").text("Popularity:" + (nowNext[2].popularity) + " % of people like this");
-      };
-      if(!nowNext[2].overview){
-        $("#resultOverView1").text("This one is quite obscure, it appears theres no synopsis!");
-      } else{
-        $("#resultOverView1").text(nowNext[2].overview);
-      };
-      if(!nowNext[2].poster_path){
-        console.log("broke");
-        $("#resultImg1").attr("src", "./assets/pickolascage.jpg");
-      }else{
-       fetch(`https://image.tmdb.org/t/p/w500/` + nowNext[2].poster_path)
-        .then(function(response){
-          return response;
+        if(!nowNext[2].title){
+          $("#resultName1").text("Apparently this one doesnt have a name");
+        }else{
+          $("#resultName1").text("Title:" + nowNext[2].title);
+        };
+        if(!nowNext[2].release_date){
+          $("#reasultRelease1").text("or a release Date");
+        }else{
+          $("#reasultRelease1").text("Release Date:" + nowNext[2].release_date);
+        };
+        if(nowNext[2].genre_ids.length > 0){
+          $("#resultGenre1").text(nowNext[2].genre_ids[0].name);
+        }else {
+          $("#resultGenre1").text("wow no genre");
+        };
+        if(!nowNext[2].runtime){
+          $("#resultRuntime1").text("Length: So short its not even defined. Yea you've already finished it");
+        }else{
+          $("#resultRuntime1").text("Length:" + (nowNext[2].runtime / 60) + " Hours");
+        };
+        if(!nowNext[2].popularity){
+          $("#resultRating1").text("No one likes this, trust us you wouldnt either");
+        }else{
+          $("#resultRating1").text("Popularity:" + (nowNext[2].popularity) + " % of people like this");
+        };
+        if(!nowNext[2].overview){
+          $("#resultOverView1").text("This one is quite obscure, it appears theres no synopsis!");
+        } else{
+          $("#resultOverView1").text(nowNext[2].overview);
+        };
+        if(!nowNext[2].poster_path){
+          console.log("broke");
+          $("#resultImg1").attr("src", "./assets/pickolascage.jpg");
+        }else{
+         fetch(`https://image.tmdb.org/t/p/w500/` + nowNext[2].poster_path)
+          .then(function(response){
+            return response;
+          })
+          .then(function(data){
+            $("#resultImg1").attr("src", data.url);
         })
-        .then(function(data){
-          $("#resultImg1").attr("src", data.url);
-        })
+      }
      
       };
         },280);
     setTimeout( function(){
-      if(nowNext[1].title = ""){
+      if(!nowNext[1].title){
         $("#resultName2").text("Apparently this one doesnt have a name");
       }else{
         $("#resultName2").text("Title:" + nowNext[1].title);
@@ -194,8 +316,8 @@ nextBtn.addEventListener('click', function(){
       }else{
         $("#reasultRelease2").text("Release Date:" + nowNext[1].release_date);
       };
-      if(nowNext[1].genres.length > 0){
-        $("#resultGenre2").text(nowNext[1].genres[0].name);
+      if(nowNext[1].genre_ids.length > 0){
+        $("#resultGenre2").text(nowNext[1].genre_ids[0].name);
       }else {
         $("#resultGenre2").text("wow no genre");
       };
@@ -226,7 +348,7 @@ nextBtn.addEventListener('click', function(){
         })
      
       };
-        },280);
+        },400);
         
   }else {
     setTimeout(function(){
@@ -249,59 +371,10 @@ nextBtn.addEventListener('click', function(){
     
   }
 });
-
-//*******************SEARCH HTML FUNCTIONALITY******************//
-
-var mApiUrlLatest = `https://api.themoviedb.org/3/movie/latest?api_key=${mKey}&language=en-US`;
-var randomMovie;
-
-//************BELOW IS THE FUNCTIONALITY TO CHOOSE A RANDOM MOVIE****************//
-function getLatestNumber() { 
-  fetch(mApiUrlLatest) 
-
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    return data
-  })
-  .then(function(latestMovie){ 
-    latestNumber = latestMovie.id
-    return latestNumber
-  })
-  .then(function getRandomMovie(latestNumber) { 
-    let rand = Math.random() * latestNumber;
-    rand = Math.floor(rand);
-    var randomMovieId = rand;
-    return randomMovieId;
-  })
-  .then(function getMovies(randomMovieId) {
-    fetch(`https://api.themoviedb.org/3/movie/${randomMovieId}` + `?api_key=${mKey}`)
-  .then(function (response) {
-    console.log(response.ok);
-
-    if(!response.ok){ getLatestNumber(); 
-    }else{return response.json();}
-  })
-  .then(function(response){
-    console.log(response);
-    if(response.adult){
-       getLatestNumber()
-    }else{
-      return response;
-    };
-  })
-  .then( function(data){
-    randomMovie = data;
-    if(!nowNext.length){
-      nowNext.push(randomMovie);
-    }
-  })
-  })
-};
-
-
-getLatestNumber();
+//****on hitting movies result page this starts to get you your first result and change info*/
+getResult();
+getNewResult();
+getNewResultForFirstTime();
 console.log(nowNext);
 setTimeout(function(){
   if(nowNext[0].title = ""){
@@ -314,8 +387,8 @@ setTimeout(function(){
   }else{
     $("#reasultRelease1").text("Release Date:" + nowNext[0].release_date);
   };
-  if(nowNext[0].genres.length > 0){
-     $("#resultGenre1").text(nowNext[0].genres[0].name);
+  if(nowNext[0].genre_ids.length > 0){
+     $("#resultGenre1").text(nowNext[0].genre_ids[0]);
   }else {
     $("#resultGenre1").text("wow no genre");
   };
@@ -348,5 +421,3 @@ setTimeout(function(){
   };
 },800);
 
-
-//***************EVENT LISTENERS FOR DYNAMICALLY CHANGING RESULT PAGE ON NEXT OR BACK****************//$
