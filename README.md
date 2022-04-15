@@ -42,3 +42,13 @@ There, a 'card' with a 'next' and 'back' button. This card will display options 
 - [Donaldson Roessling](https://github.com/Droessling94)
 
 - [Joshua Diaz](https://github.com/Jdiaz240)
+
+### Screenshots:
+
+ ![Home page](./assets/homepage.png)
+
+ ![Movies page](./assets/moviepage.png)
+
+ ![Games page](./assets/games.png)
+
+ ![Results page](./assets/results.png)
