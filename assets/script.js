@@ -413,7 +413,7 @@ getNewResult();
 getNewResultForFirstTime();
 console.log(nowNext);
 setTimeout(function(){
-  if(nowNext[0].title = ""){
+  if(!nowNext[0].title){
     $("#resultName1").text("Apparently this one doesnt have a name");
   }else{
     $("#resultName1").text("Title:" + nowNext[0].title);
